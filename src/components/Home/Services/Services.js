@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import Service from "./Service";
+import { Container, Row } from "react-bootstrap";
 function Services(props) {
   const [services, setServices] = useState([]);
   useEffect(() => {
@@ -10,9 +11,13 @@ function Services(props) {
   return (
     <div>
       <h1>Our Services</h1>
-      {services.map((service) => (
-        <h3>{service.name}</h3>
-      ))}
+      <Container>
+        <Row xs={2} md={3} lg={3}>
+          {services.map((service) => (
+            <Service service={service} key={service._id}></Service>
+          ))}
+        </Row>
+      </Container>
     </div>
   );
 }

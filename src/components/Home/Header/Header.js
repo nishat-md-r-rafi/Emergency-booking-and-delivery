@@ -8,8 +8,12 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 function Header(props) {
+  const { user, logOut } = useAuth();
+  console.log(user, logOut);
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -30,6 +34,15 @@ function Header(props) {
             </Nav>
           </Navbar.Collapse>
         </Container>
+        {user?.email ? (
+          <Link to="/login">
+            <Button className="btn btn-primary">Login</Button>
+          </Link>
+        ) : (
+          <Button className="btn btn-primary" onClick={logOut}>
+            Logout
+          </Button>
+        )}
       </Navbar>
     </div>
   );
