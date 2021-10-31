@@ -11,12 +11,12 @@ function AddService(props) {
     e.preventDefault();
     const name = nameRef.current.value;
     const description = descriptionRef.current.value;
-    const url = urlRef.current.value;
+    const img = urlRef.current.value;
 
-    const newService = { name, description, url };
+    const newService = { name, description, img: img };
     console.log(newService);
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://dry-fortress-78843.herokuapp.com/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

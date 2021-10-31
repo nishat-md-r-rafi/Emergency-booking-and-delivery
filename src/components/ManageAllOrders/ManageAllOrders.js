@@ -14,7 +14,7 @@ function ManageAllOrders(props) {
 
   const handleDelete = (id) => {
     console.log(id);
-    const url = `http://localhost:5000/services/${id}`;
+    const url = `https://dry-fortress-78843.herokuapp.com/services/${id}`;
 
     fetch(url, {
       method: "DELETE",
