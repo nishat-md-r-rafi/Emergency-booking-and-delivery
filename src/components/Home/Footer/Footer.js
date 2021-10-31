@@ -19,7 +19,7 @@ function Footer(props) {
               marginTop: "-50px",
             }}
           >
-            Susrusha
+            SafeEB
           </h1>
           <Container>
             <Row>

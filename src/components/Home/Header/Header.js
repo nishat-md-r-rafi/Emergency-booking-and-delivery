@@ -13,7 +13,7 @@ import useAuth from "../../../hooks/useAuth";
 
 function Header(props) {
   const { user, logOut } = useAuth();
-  console.log(user, logOut);
+  console.log(user.email);
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -27,22 +27,20 @@ function Header(props) {
               navbarScroll
             >
               <Nav.Link href="/home">Home</Nav.Link>
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/addService">AddService</Nav.Link>
+              <Nav.Link href="/myOrders">MyOrders</Nav.Link>
+              <Nav.Link href="/manageOrders">ManageOrders</Nav.Link>
               <Nav.Link href="#" disabled>
                 Emergency Drug Delivery and ICU Booking
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
+          {user?.email ? (
+            <Button onClick={logOut}>Logout</Button>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
         </Container>
-        {user?.email ? (
-          <Link to="/login">
-            <Button className="btn btn-primary">Login</Button>
-          </Link>
-        ) : (
-          <Button className="btn btn-primary" onClick={logOut}>
-            Logout
-          </Button>
-        )}
       </Navbar>
     </div>
   );

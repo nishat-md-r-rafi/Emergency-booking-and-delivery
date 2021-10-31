@@ -12,29 +12,32 @@ initializeAuthentication();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(true);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
   const logInUsingGoogle = () => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const logOut = () => {
-    signOut(auth).then(() => {
-      setUser({});
-    });
-  };
+  // const logOut = () => {
+  //   signOut(auth).then(() => {
+  //     setUser({});
+  //   });
+  // };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
         setUser({});
       }
     });
-    return () => unsubscribe;
+    return () => unsubscribed;
   }, []);
+
+  const logOut = () => {
+    signOut(auth).then(() => {});
+  };
 
   return {
     user,

@@ -8,7 +8,7 @@ function Login(props) {
     <div>
       <h1>Please Login To Get The Services</h1>
       <Button className="btn btn-primary" onClick={logInUsingGoogle}>
-        Register Using Google{" "}
+        Register Using Google
       </Button>
     </div>
   );
